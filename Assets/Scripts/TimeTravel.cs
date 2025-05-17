@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TimeTravel : MonoBehaviour
 {
+    private TextMeshProUGUI timeText;
     public GameObject PlayerSpawn;
     public GameObject fpscam;
     private GameObject effect1;
     private GameObject effect2;
     private GameObject dieEffect;
+    public int time;
 
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.2f;
@@ -17,16 +21,33 @@ public class TimeTravel : MonoBehaviour
 
     void Awake()
     {
+        timeText = GameObject.Find("CanvasUI").transform.Find("GameUI").transform.Find("TimeText").GetComponent<TextMeshProUGUI>();
         effect1 = PlayerSpawn.transform.Find("Effect1").gameObject;
         effect2 = PlayerSpawn.transform.Find("Effect2").gameObject;
         dieEffect = PlayerSpawn.transform.Find("DieEffect").gameObject;
         effect1.SetActive(false);
         effect2.SetActive(false);
         dieEffect.SetActive(false);
+
+        StartCoroutine(AddTimeEverySecond());
+    }
+
+    IEnumerator AddTimeEverySecond()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            time += 1;
+        }
     }
 
     void Update()
     {
+        if(timeText.gameObject.activeSelf == true)
+        {
+            timeText.text = "Time: " + time.ToString();
+        }
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             TimeTravelToSpawn();
@@ -45,6 +66,7 @@ public class TimeTravel : MonoBehaviour
 
     public void die()
     {
+        time -= 10;
         gameObject.transform.position = PlayerSpawn.transform.position;
         gameObject.transform.rotation = PlayerSpawn.transform.rotation;
         StartCoroutine(DeathEffectRoutine());
