@@ -66,7 +66,7 @@ public class TimeTravel : MonoBehaviour
 
     public void die()
     {
-        time -= 10;
+        time += 10;
         gameObject.transform.position = PlayerSpawn.transform.position;
         gameObject.transform.rotation = PlayerSpawn.transform.rotation;
         StartCoroutine(DeathEffectRoutine());

@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class TimeKeeperAi : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     private NavMeshAgent agent;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
     private Rigidbody rb;
@@ -21,30 +22,34 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
-        forward.y = 0f;
-        right.y = 0f;
-        forward.Normalize();
-        right.Normalize();
+            Vector3 forward = cameraTransform.forward;
+            Vector3 right = cameraTransform.right;
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
 
-        Vector3 move = (forward * moveZ + right * moveX).normalized;
-        Vector3 newVelocity = new Vector3(move.x * moveSpeed, rb.velocity.y, move.z * moveSpeed);
-        rb.velocity = newVelocity;
+            Vector3 move = (forward * moveZ + right * moveX).normalized;
+            Vector3 newVelocity = new Vector3(move.x * moveSpeed, rb.velocity.y, move.z * moveSpeed);
+            rb.velocity = newVelocity;
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundMask);
+            isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundMask);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
 
-        Vector3 camForward = cameraTransform.forward;
-        camForward.y = 0f;
-        if (camForward.sqrMagnitude > 0.01f)
-            transform.forward = camForward;
+            Vector3 camForward = cameraTransform.forward;
+            camForward.y = 0f;
+            if (camForward.sqrMagnitude > 0.01f)
+                transform.forward = camForward;
     }
+
+
+
 }

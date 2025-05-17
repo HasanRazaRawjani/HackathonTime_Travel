@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
+    
     public float mouseSensitivity = 100f;
     public Vector2 pitchLimits = new Vector2(-80f, 80f); // X axis clamp
 
@@ -12,8 +13,6 @@ public class CameraControll : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
         Vector3 angles = transform.eulerAngles;
         pitch = angles.x;
