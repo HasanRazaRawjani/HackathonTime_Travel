@@ -9,6 +9,7 @@ public class TimeTravel : MonoBehaviour
     public GameObject fpscam;
     private GameObject effect1;
     private GameObject effect2;
+    private GameObject dieEffect;
 
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.2f;
@@ -18,8 +19,10 @@ public class TimeTravel : MonoBehaviour
     {
         effect1 = PlayerSpawn.transform.Find("Effect1").gameObject;
         effect2 = PlayerSpawn.transform.Find("Effect2").gameObject;
+        dieEffect = PlayerSpawn.transform.Find("DieEffect").gameObject;
         effect1.SetActive(false);
         effect2.SetActive(false);
+        dieEffect.SetActive(false);
     }
 
     void Update()
@@ -38,6 +41,20 @@ public class TimeTravel : MonoBehaviour
         if (shakeCoroutine != null)
             StopCoroutine(shakeCoroutine);
         shakeCoroutine = StartCoroutine(ScreenShake());
+    }
+
+    public void die()
+    {
+        gameObject.transform.position = PlayerSpawn.transform.position;
+        gameObject.transform.rotation = PlayerSpawn.transform.rotation;
+        StartCoroutine(DeathEffectRoutine());
+    }
+
+    IEnumerator DeathEffectRoutine()
+    {
+        dieEffect.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        dieEffect.SetActive(false);
     }
 
     IEnumerator ScreenShake()
