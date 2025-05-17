@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public float groundCheckDistance = 0.2f;
     public LayerMask groundMask;
+    public Transform cameraTransform; 
 
     void Start()
     {
@@ -19,21 +20,31 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Get input
+        
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 move = (forward * moveZ + right * moveX).normalized;
         Vector3 newVelocity = new Vector3(move.x * moveSpeed, rb.velocity.y, move.z * moveSpeed);
         rb.velocity = newVelocity;
 
-        // Ground check using raycast
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundMask);
 
-        // Jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
+        Vector3 camForward = cameraTransform.forward;
+        camForward.y = 0f;
+        if (camForward.sqrMagnitude > 0.01f)
+            transform.forward = camForward;
     }
 }
