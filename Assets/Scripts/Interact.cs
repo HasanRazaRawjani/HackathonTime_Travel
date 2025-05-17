@@ -26,10 +26,10 @@ public class Interact : MonoBehaviour
                 UIInteractactText.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //Animation
-
+                    
                     if (hit.collider.gameObject.name == "RightButton")
                     {
+                        hit.collider.gameObject.GetComponent<Animator>().SetTrigger("isClicked");
                         hit.collider.gameObject.GetComponent<RightButton>().activateLazer();
                     }
                     

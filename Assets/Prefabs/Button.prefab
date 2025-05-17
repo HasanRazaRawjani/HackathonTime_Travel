@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 9110721836795400796}
   - component: {fileID: 6819684635028412755}
   - component: {fileID: 8803470345935798837}
-  - component: {fileID: 6621297109803399046}
+  - component: {fileID: 1611768119062728035}
   m_Layer: 0
   m_Name: Button
   m_TagString: Interactable
@@ -174,18 +174,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85293140f4acbbe44b3cf7c7b1cb32f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6621297109803399046
-MonoBehaviour:
+--- !u!95 &1611768119062728035
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5120485050928769420}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85293140f4acbbe44b3cf7c7b1cb32f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75e87b5b558a47b4592000ea518aa1ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5967778333685719001
 GameObject:
   m_ObjectHideFlags: 0

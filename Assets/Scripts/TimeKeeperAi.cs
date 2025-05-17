@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class TimeKeeperAi : MonoBehaviour
 {
-    public Transform player; // Assign your player in the Inspector
+    public Transform player;
     private NavMeshAgent agent;
 
     void Start()
@@ -20,4 +20,17 @@ public class TimeKeeperAi : MonoBehaviour
             agent.SetDestination(player.position);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            TimeTravel timeTravel = collision.gameObject.GetComponent<TimeTravel>();
+            if (timeTravel != null)
+            {
+                timeTravel.die();
+            }
+        }
+    }
+
 }
