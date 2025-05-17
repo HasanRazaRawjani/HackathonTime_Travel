@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 741303044694638734}
   m_Layer: 0
   m_Name: wooden_spikes (4)
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7600039305435370575
 Transform:
@@ -119,10 +119,10 @@ GameObject:
   - component: {fileID: 8979006020555494677}
   m_Layer: 0
   m_Name: wooden_spikes (2)
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5169294440090248299
 Transform:
@@ -224,10 +224,10 @@ GameObject:
   - component: {fileID: 3910523801229252731}
   m_Layer: 0
   m_Name: wooden_spikes (1)
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3429822023526136778
 Transform:
@@ -329,10 +329,10 @@ GameObject:
   - component: {fileID: 8583982755314190140}
   m_Layer: 0
   m_Name: wooden_spikes (3)
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3285346724003936426
 Transform:
@@ -434,7 +434,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1360709501650913862
 Transform:
@@ -470,10 +470,10 @@ GameObject:
   - component: {fileID: 8319363052318675381}
   m_Layer: 0
   m_Name: wooden_spikes
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1682828040050067320
 Transform:
