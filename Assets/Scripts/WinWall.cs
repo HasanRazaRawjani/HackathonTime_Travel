@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class WinWall : MonoBehaviour
 {
+    private SideUI sideUI;
     private GameObject player;
     private UI uI;
 
     void Start()
     {
         uI = GameObject.Find("CanvasUI").GetComponent<UI>();
+        sideUI = GameObject.Find("CanvasUI").GetComponent<SideUI>();
         player = GameObject.Find("Player");
 
     }
@@ -19,7 +21,14 @@ public class WinWall : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player.GetComponent<TimeTravel>().die();
-            uI.ShowWinMenu();
+            if (uI != null)
+            {
+                uI.ShowWinMenu();
+            }
+            else
+            {
+                sideUI.ShowWinMenu();
+            }
             player.GetComponent<TimeTravel>().time = 0;
         }
     }

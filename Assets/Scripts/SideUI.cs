@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-public class UI : MonoBehaviour
+public class SideUI : MonoBehaviour
 {
     
     private PlayerController playerScript;
@@ -18,20 +18,15 @@ public class UI : MonoBehaviour
     {
         playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         GameUI = transform.Find("GameUI").gameObject;
-        StartMenu = transform.Find("StartMenu").gameObject;
         WinMenu = transform.Find("WinScreen").gameObject;
-        LevelMenu = transform.Find("LevelMenu").gameObject;
-        Time.timeScale = 0f;
-        GameUI.SetActive(false);
-        StartMenu.SetActive(true);
+        Time.timeScale = 1f;
+        GameUI.SetActive(true);
         WinMenu.SetActive(false);
-        LevelMenu.SetActive(false);
 
     }
 
     public void ShowGameUI1()
     {
-        SceneManager.LoadScene("Level1");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
@@ -75,9 +70,7 @@ public class UI : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         GameUI.SetActive(false);
-        StartMenu.SetActive(true);
         WinMenu.SetActive(false);
-        LevelMenu.SetActive(false);
     }
 
 
@@ -87,9 +80,7 @@ public class UI : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         GameUI.SetActive(false);
-        StartMenu.SetActive(false);
         WinMenu.SetActive(true);
-        LevelMenu.SetActive(false);
     }
 
     public void ShowLevelMenu()
