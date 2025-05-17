@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Callbacks;
+using UnityEngine;
+
+public class Interact : MonoBehaviour
+{
+    private Rigidbody rb;
+    private GameObject cam;
+    public float interactDistance = 3f;
+    public GameObject UIInteractactText;
+
+    void Start()
+    {
+        UIInteractactText.SetActive(false);
+        rb = GetComponent<Rigidbody>();    
+        cam = gameObject.transform.Find("Main Camera").gameObject;
+    }
+
+    void Update()
+    {
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, interactDistance))
+        {
+            if (hit.collider.CompareTag("Interactable"))
+            {
+                UIInteractactText.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //Animation
+
+                    if (hit.collider.gameObject.name == "RightButton")
+                    {
+                        hit.collider.gameObject.GetComponent<RightButton>().activateLazer();
+                    }
+                    
+                    if (hit.collider.gameObject.name == "Button")
+                    {
+                        hit.collider.gameObject.GetComponent<BadButton>().killPlayer();
+                    }
+
+                }
+
+            } else
+            {
+                UIInteractactText.SetActive(false);
+            }
+        }
+    }
+}
