@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RightButton : MonoBehaviour
+public class GateDroppingFinalScript : MonoBehaviour
 {
     public GameObject Lazer;
     public void activateLazer()
     {
-        Lazer.SetActive(false);
+        Lazer.GetComponent<Rigidbody>().useGravity = true;
     }
 }

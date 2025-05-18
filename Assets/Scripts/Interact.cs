@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +36,13 @@ public class Interact : MonoBehaviour
                             ButtonPress.Play();
                         }
                         hit.collider.gameObject.GetComponent<Animator>().SetTrigger("isClicked");
-                        hit.collider.gameObject.GetComponent<RightButton>().activateLazer();
+                        if (hit.collider.gameObject.GetComponent<RightButton>() != null)
+                        {
+                            hit.collider.gameObject.GetComponent<RightButton>().activateLazer();
+                        } else
+                        {
+                            hit.collider.gameObject.GetComponent<GateDroppingFinalScript>().activateLazer();
+                        }
                     }
                     
                     if (hit.collider.gameObject.name == "Button")
