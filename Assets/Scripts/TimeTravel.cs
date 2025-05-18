@@ -7,6 +7,8 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class TimeTravel : MonoBehaviour
 {
+    private AudioSource TimeWarp;
+    private AudioSource DeathSound;
     private TextMeshProUGUI timeText;
     public GameObject PlayerSpawn;
     public GameObject fpscam;
@@ -21,6 +23,8 @@ public class TimeTravel : MonoBehaviour
 
     void Awake()
     {
+        TimeWarp = GameObject.Find("MusicController").transform.Find("TimeTravel").GetComponent<AudioSource>();
+        DeathSound = GameObject.Find("MusicController").transform.Find("DeathMusic").GetComponent<AudioSource>();
         playerController = GetComponent<PlayerController>();
         timeText = GameObject.Find("CanvasUI").transform.Find("GameUI").transform.Find("TimeText").GetComponent<TextMeshProUGUI>();
         effect1 = PlayerSpawn.transform.Find("Effect1").gameObject;
@@ -57,6 +61,10 @@ public class TimeTravel : MonoBehaviour
 
     void TimeTravelToSpawn()
     {
+        if (!TimeWarp.isPlaying)
+        {
+            TimeWarp.Play();
+        }
         gameObject.transform.localScale = new Vector3(1.712111f, gameObject.transform.localScale.y/2, 1.712111f);
         playerController.jumpForce -= 1f;
         gameObject.transform.position = PlayerSpawn.transform.position; 
@@ -69,6 +77,10 @@ public class TimeTravel : MonoBehaviour
 
     public void die()
     {
+        if (!DeathSound.isPlaying)
+        {
+            DeathSound.Play();
+        }
         time += 10;
         playerController.jumpForce = 7f;
         gameObject.transform.localScale = new Vector3(1.712111f, 1.712111f, 1.712111f);

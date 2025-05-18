@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class TurretShoot : MonoBehaviour
 {
+    private AudioSource TurretShhootSound;
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate = 1f;
     public float bulletSpeed = 20f;
 
     private float fireTimer = 0f;
+
+    void Start()
+    {
+        TurretShhootSound = GameObject.Find("MusicController").transform.Find("TurretSound").GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -23,6 +29,10 @@ public class TurretShoot : MonoBehaviour
 
     void Shoot()
     {
+        if(!TurretShhootSound.isPlaying)
+        {
+            TurretShhootSound.Play();
+        }
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (bullet.GetComponent<Rigidbody>() != null)

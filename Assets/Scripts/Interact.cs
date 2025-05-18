@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interact : MonoBehaviour
 {
+    private AudioSource ButtonPress;
     private Rigidbody rb;
     private GameObject cam;
     public float interactDistance = 3f;
@@ -12,6 +14,7 @@ public class Interact : MonoBehaviour
 
     void Start()
     {
+        ButtonPress = GameObject.Find("MusicController").transform.Find("ButtonPress").GetComponent<AudioSource>();
         UIInteractactText.SetActive(false);
         rb = GetComponent<Rigidbody>();    
         cam = gameObject.transform.Find("Main Camera").gameObject;
@@ -29,6 +32,10 @@ public class Interact : MonoBehaviour
                     
                     if (hit.collider.gameObject.name == "RightButton")
                     {
+                        if (!ButtonPress.isPlaying)
+                        {
+                            ButtonPress.Play();
+                        }
                         hit.collider.gameObject.GetComponent<Animator>().SetTrigger("isClicked");
                         hit.collider.gameObject.GetComponent<RightButton>().activateLazer();
                     }

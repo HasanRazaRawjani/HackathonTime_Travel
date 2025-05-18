@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private AudioSource walkSound;
     
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        walkSound = GameObject.Find("MusicController").transform.Find("WalkingSound").GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -23,6 +25,22 @@ public class PlayerController : MonoBehaviour
     {
         
         
+            Vector3 horizontalVelocity = rb.velocity;
+            horizontalVelocity.y = 0f;
+            bool isWalking = horizontalVelocity.magnitude > 0.1f;
+
+
+            if (isWalking)
+            {
+                if (!walkSound.isPlaying)
+                {
+                    walkSound.Play();
+                }
+                Debug.Log("Player is walking");
+            }
+
+
+
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
 
