@@ -27,6 +27,8 @@ public class SideUI : MonoBehaviour
 
     public void ShowGameUI1()
     {
+        SceneManager.LoadScene("Level1");
+        GameObject.Find("CanvasUI").GetComponent<UI>().ShowGameUI1();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;

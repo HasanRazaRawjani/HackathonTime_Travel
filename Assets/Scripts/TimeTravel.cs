@@ -14,13 +14,14 @@ public class TimeTravel : MonoBehaviour
     private GameObject effect2;
     private GameObject dieEffect;
     public int time;
-
+    private PlayerController playerController;
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.2f;
     private Coroutine shakeCoroutine;
 
     void Awake()
     {
+        playerController = GetComponent<PlayerController>();
         timeText = GameObject.Find("CanvasUI").transform.Find("GameUI").transform.Find("TimeText").GetComponent<TextMeshProUGUI>();
         effect1 = PlayerSpawn.transform.Find("Effect1").gameObject;
         effect2 = PlayerSpawn.transform.Find("Effect2").gameObject;
@@ -56,6 +57,8 @@ public class TimeTravel : MonoBehaviour
 
     void TimeTravelToSpawn()
     {
+        gameObject.transform.localScale = new Vector3(1.712111f, gameObject.transform.localScale.y/2, 1.712111f);
+        playerController.moveSpeed -= 1f;
         gameObject.transform.position = PlayerSpawn.transform.position; 
         gameObject.transform.rotation = PlayerSpawn.transform.rotation; 
 
@@ -67,6 +70,8 @@ public class TimeTravel : MonoBehaviour
     public void die()
     {
         time += 10;
+        playerController.moveSpeed = 7f;
+        gameObject.transform.localScale = new Vector3(1.712111f, 1.712111f, 1.712111f);
         gameObject.transform.position = PlayerSpawn.transform.position;
         gameObject.transform.rotation = PlayerSpawn.transform.rotation;
         StartCoroutine(DeathEffectRoutine());
