@@ -58,7 +58,7 @@ public class TimeTravel : MonoBehaviour
     void TimeTravelToSpawn()
     {
         gameObject.transform.localScale = new Vector3(1.712111f, gameObject.transform.localScale.y/2, 1.712111f);
-        playerController.moveSpeed -= 1f;
+        playerController.jumpForce -= 1f;
         gameObject.transform.position = PlayerSpawn.transform.position; 
         gameObject.transform.rotation = PlayerSpawn.transform.rotation; 
 
@@ -70,7 +70,7 @@ public class TimeTravel : MonoBehaviour
     public void die()
     {
         time += 10;
-        playerController.moveSpeed = 7f;
+        playerController.jumpForce = 7f;
         gameObject.transform.localScale = new Vector3(1.712111f, 1.712111f, 1.712111f);
         gameObject.transform.position = PlayerSpawn.transform.position;
         gameObject.transform.rotation = PlayerSpawn.transform.rotation;
