@@ -13,7 +13,6 @@ public class UI : MonoBehaviour
     private GameObject StartMenu;
     private GameObject WinMenu;
     private GameObject LevelMenu;
-    // Start is called before the first frame update
     void Start()
     {
         playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
