@@ -1,2 +1,2 @@
-# HackathonTime_Travel
-AcademiesHacksTheme
+# AcademiesHacks
+Name: Paradox Thief
